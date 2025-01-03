@@ -1,3 +1,5 @@
+import { Skeleton } from "@/components/ui/skeleton"
+import View from "@/components/View"
 import { formatDate } from "@/lib/utils"
 import { client } from "@/sanity/lib/client"
 import { STARTUP_QUERY_BY_ID } from "@/sanity/lib/queries"
@@ -5,12 +7,13 @@ import markdownit from "markdown-it"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 
 const md = markdownit();
 export default async function StartupPage({params}:{params:Promise<{id:string}>}) {
     const id = (await params).id
     console.log({id})
-    const post = await client.fetch(STARTUP_QUERY_BY_ID, {id})
+    const post = await client.withConfig({useCdn:false}).fetch(STARTUP_QUERY_BY_ID, {id})
     if (!post) return notFound();
 
     const parsedContent = md.render(post?.pitch || "");
@@ -67,6 +70,9 @@ export default async function StartupPage({params}:{params:Promise<{id:string}>}
         </div>
 
         <hr className="divider" />
+        <Suspense fallback={<Skeleton/>}>
+          <View id={id}/>
+        </Suspense>
         </section>
         </>
   )

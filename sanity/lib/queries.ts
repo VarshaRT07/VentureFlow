@@ -29,3 +29,9 @@ export const STARTUP_QUERY_BY_ID =
   image,
   pitch,
 }`);
+
+export const STARTUP_VIEWS_COUNT =
+  defineQuery(`*[_type == "startup" && _id == $id][0]{
+  _id, 
+  views,
+}`);
