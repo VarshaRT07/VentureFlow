@@ -1,11 +1,12 @@
 "use client";
 
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { Author, Startup } from "@/sanity/types";
 import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
 
 export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 export default function StartupCard({
@@ -41,7 +42,8 @@ export default function StartupCard({
         </div>
         <Link href={`/startup/${post.author?.id}`}>
           <Image
-            src={post.author?.image}
+            // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+            src={post.author?.image!}
             alt="placeholder"
             width={48}
             height={48}
@@ -56,7 +58,7 @@ export default function StartupCard({
           width={200}
           height={200}
           src={post.image!}
-          alt={post.author?.name!}
+          alt="post image"
           className="w-full h-[164px] rounded-[10px] object-cover"
         />
       </Link>
@@ -72,3 +74,13 @@ export default function StartupCard({
     </li>
   );
 }
+
+export const StartupCardSkeleton = () => (
+  <>
+    {[0, 1, 2, 3, 4].map((index: number) => (
+      <li key={cn("skeleton", index)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);

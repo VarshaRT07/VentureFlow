@@ -13,7 +13,7 @@ const md = markdownit();
 export default async function StartupPage({params}:{params:Promise<{id:string}>}) {
     const id = (await params).id
     console.log({id})
-    const post = await client.withConfig({useCdn:false}).fetch(STARTUP_QUERY_BY_ID, {id})
+    const post = await client.fetch(STARTUP_QUERY_BY_ID, {id})
     if (!post) return notFound();
 
     const parsedContent = md.render(post?.pitch || "");

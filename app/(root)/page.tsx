@@ -1,3 +1,4 @@
+import { auth } from "@/lib/auth";
 import { client } from "@/sanity/lib/client";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
@@ -11,6 +12,10 @@ export default async function Home({
   console.log((await searchParams).query)
   const query = (await searchParams).query;
   const params = {search: query||null}
+
+  const session = await auth()
+
+  console.log(session?.id, 'session')
   console.log(params)
  
   const posts = await client.fetch(STARTUP_QUERY, params);
