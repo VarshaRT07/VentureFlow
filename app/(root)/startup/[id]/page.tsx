@@ -27,12 +27,18 @@ export default async function StartupPage({params}:{params:Promise<{id:string}>}
       </section>
 
       <section className="section_container">
-        <img
+        <div className="max-w-4xl mx-auto h-[550px]">
+          <Image
           src={post.image}
           alt="thumbnail"
-          className="w-full h-auto rounded-xl"
+          className="w-full h-full rounded-xl"
+          quality={100}
+          width={700}
+          height={300}
         />
 
+        </div>
+        
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex-between gap-5">
             <Link
@@ -61,7 +67,7 @@ export default async function StartupPage({params}:{params:Promise<{id:string}>}
           <h3 className="text-white text-[30px] font-bold">Pitch Details</h3>
           {parsedContent ? (
             <article
-              className="prose bg-white p-4 max-w-4xl font-work-sans break-all"
+              className="prose bg-white p-4 max-w-4xl break-all"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
           ) : (

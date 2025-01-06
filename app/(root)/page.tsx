@@ -29,7 +29,7 @@ export default async function Home({
           <h1 className="items-left px-6 py-3 font-work-sans text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-left my-5">
             Pitch Your Startup <br /> Connect With Entrepreneurs
           </h1>
-          <p className="text-[20px] text-primary max-w-2xl text-left break-words !max-w-3xl px-6">
+          <p className="text-[20px] text-primary max-w-2xl text-left break-words !max-w-3xl px-6 font-work-sans">
             Submit Ideas, Vote on Pitches, and Get Noticed on Virtual
             Competitions
           </p>
@@ -46,11 +46,11 @@ export default async function Home({
               height={300}
               className="pb-3"
             />
-            <p className="bg-primary w-[300px] font-medium text-[20px] text-black max-w-xl break-words">
-              Empower the best ideas with your vote and feedback.
+            <p className="bg-primary w-[300px] font-semibold text-[28px] text-black max-w-xl break-words text-left p-5">
+            Where Ideas Take Flight and Visions Turn into Ventures.
             </p>
           </div>
-          <div className="bg-white pt-8 py-2 px-2 max-w-xl text-3xl font-semibold text-black">
+          <div className="bg-white pt-8 py-2 px-2 max-w-xl text-3xl font-bold text-black">
             Empower the best ideas <br /> with your vote and feedback.
           </div>
         </div>

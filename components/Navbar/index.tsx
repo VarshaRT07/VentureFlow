@@ -32,8 +32,8 @@ const Navbar = async () => {
                 </button>
               </Form>
               <Link href={`/user/${session?.id}`}>
-                <Avatar className="size-10">
-                  <AvatarImage
+                <Avatar>
+                  <AvatarImage className="w-8 h-8 rounded-full"
                     src={session?.user?.image || ""}
                     alt={session?.user?.name || ""}
                   />
